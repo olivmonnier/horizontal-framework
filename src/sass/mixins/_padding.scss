@@ -1,0 +1,7 @@
+@mixin padding($level: 'normal', $side: '') {
+  @if $side == '' {
+    padding: map-get($block-padding, $level);
+  } @else {
+    padding-#{$side}: map-get($block-padding, $level);
+  }
+}

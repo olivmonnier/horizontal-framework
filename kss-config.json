@@ -1,0 +1,12 @@
+{
+  "title": "Horizontal Framework",
+  "source": "src/sass/",
+  "destination": "docs/",
+  "builder": "node_modules/michelangelo/kss_styleguide/custom-template/",
+  "css": [
+    "../dist/main.css"
+  ],
+  "js": [
+    "../dist/bundle.js"
+  ]
+}
