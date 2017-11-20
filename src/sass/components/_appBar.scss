@@ -30,40 +30,6 @@
   }
 }
 
-// Appbar position
-//
-// A appbar can be positioned on top or bottom
-//
-// Markup:
-// <div style="height: 150px">
-//   <div class="appbar top">
-//     <button data-toggle="appbar">Toggle</button>
-//     <div class="content">
-//       <h1>Title</h1>
-//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-//     </div>
-//   </div>
-// </div>
-//
-// Styleguide Components.appbar.position
-
-.appbar {
-  &.top,
-  &.bottom {
-    position: absolute;
-    left: 0;
-    right: 0;
-  }
-
-  &.top {
-    top: 0;
-  }
-
-  &.bottom {
-    bottom: 0;
-  }
-}
-
 // Appbar toggle button
 //
 // Toggle button can be aligned on right side
@@ -79,12 +45,46 @@
 //   </div>
 // </div>
 //
-// Styleguide Components.appbar.buttonToggle
+// Styleguide Components.appbar.1
 .appbar {
-  > .left {
+  >.left {
     text-align: left;
   }
-  > .right {
+  >.right {
     text-align: right;
+  }
+}
+
+// Appbar position
+//
+// A appbar can be positioned on top or bottom
+//
+// Markup:
+// <div style="height: 150px">
+//   <div class="appbar top">
+//     <button data-toggle="appbar">Toggle</button>
+//     <div class="content">
+//       <h1>Title</h1>
+//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+//     </div>
+//   </div>
+// </div>
+//
+// Styleguide Components.appbar.2
+
+.appbar {
+  &.top,
+  &.bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &.top {
+    top: 0;
+  }
+
+  &.bottom {
+    bottom: 0;
   }
 }

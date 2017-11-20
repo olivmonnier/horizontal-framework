@@ -1,2 +1,2 @@
 import './appbar'
-import './tabsection'
+import './sectionTabs'

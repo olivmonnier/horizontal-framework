@@ -1,0 +1,65 @@
+// ListItems
+//
+// Markup:
+// <div class="list-items" style="width: 300px;">
+//   <ul class="content">
+//     <li style="padding: 20px; width: 50px;">0</li>
+//     <li style="padding: 20px; width: 50px;">1</li>
+//     <li style="padding: 20px; width: 50px;">2</li>
+//     <li style="padding: 20px; width: 50px;">3</li>
+//     <li style="padding: 20px; width: 50px;">4</li>
+//     <li style="padding: 20px; width: 50px;">5</li>
+//     <li style="padding: 20px; width: 50px;">6</li>
+//     <li style="padding: 20px; width: 50px;">7</li>
+//     <li style="padding: 20px; width: 50px;">8</li>
+//     <li style="padding: 20px; width: 50px;">9</li>
+//   </ul>
+// </div>
+//
+// Styleguide Components.listitems
+
+.list-items {
+  .content {
+    padding-left: 0;
+    list-style: none;
+    white-space: nowrap;
+    overflow-y: none;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    > li {
+      display: inline-block;
+    }
+  }
+}
+
+// ListItems without scrollbar
+//
+// Markup:
+// <div class="list-items" style="width: 300px;">
+//   <div class="no-scrollbar">
+//     <ul class="content">
+//       <li style="padding: 20px; width: 50px;">0</li>
+//       <li style="padding: 20px; width: 50px;">1</li>
+//       <li style="padding: 20px; width: 50px;">2</li>
+//       <li style="padding: 20px; width: 50px;">3</li>
+//       <li style="padding: 20px; width: 50px;">4</li>
+//       <li style="padding: 20px; width: 50px;">5</li>
+//       <li style="padding: 20px; width: 50px;">6</li>
+//       <li style="padding: 20px; width: 50px;">7</li>
+//       <li style="padding: 20px; width: 50px;">8</li>
+//       <li style="padding: 20px; width: 50px;">9</li>
+//     </ul>
+//   </div>
+// </div>
+//
+// Styleguide Components.listitems.1
+.list-items {
+  .no-scrollbar {
+    overflow: hidden;
+
+    > .content {
+      margin-bottom: -18px;
+    }
+  }
+}
