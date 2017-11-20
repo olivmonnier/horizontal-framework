@@ -19,7 +19,14 @@ require('./sectionTabs');
 },{"./appbar":1,"./sectionTabs":3}],3:[function(require,module,exports){
 'use strict';
 
+var _scrollHorizontal = require('../scrollHorizontal');
+
+var _scrollHorizontal2 = _interopRequireDefault(_scrollHorizontal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var tabNavs = Array.from(document.querySelectorAll('.section-tabs .nav > li > a'));
+var sectionTabs = Array.from(document.querySelectorAll('.section-tabs'));
 var sectionsActive = Array.from(document.querySelectorAll('.section-tabs .section.active'));
 
 tabNavs.forEach(function (nav) {
@@ -45,6 +52,7 @@ tabNavs.forEach(function (nav) {
 
 window.onload = function () {
   sectionsActive.forEach(scrollToSectionActive);
+  sectionTabs.forEach(_scrollHorizontal2.default);
 };
 
 function scrollToSectionActive(sectionEl) {
@@ -60,7 +68,7 @@ function scrollToSectionActive(sectionEl) {
   }
 }
 
-},{}],4:[function(require,module,exports){
+},{"../scrollHorizontal":6}],4:[function(require,module,exports){
 'use strict';
 
 require('./polyfill');
@@ -162,6 +170,43 @@ if (window.Element && !Element.prototype.closest) {
     return el;
   };
 }
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var mousewheelevt = /Firefox/i.test(navigator.userAgent) ? 'DOMMouseScroll' : 'mousewheel';
+var scrollSpeed = 20;
+
+var scrollHorizontal = function scrollHorizontal(el) {
+  var scroll = 0;
+
+  var contentEl = el.querySelector('.content');
+  var itemLast = contentEl.children[contentEl.children.length - 1];
+  var scrollMax = itemLast.offsetLeft + itemLast.offsetWidth - contentEl.offsetLeft - contentEl.offsetWidth;
+
+  contentEl.addEventListener(mousewheelevt, function (e) {
+    e.preventDefault();
+
+    var diffScroll = contentEl.scrollLeft - scroll;
+
+    if (Math.abs(diffScroll) > scrollSpeed) {
+      scroll = contentEl.scrollLeft;
+    }
+
+    if ((e.wheelDelta || e.detail) > 0) {
+      if (scroll >= 0) scroll -= scrollSpeed;
+    } else {
+      if (scroll <= scrollMax) scroll += scrollSpeed;
+    }
+
+    contentEl.scrollLeft = scroll;
+  });
+};
+
+exports.default = scrollHorizontal;
 
 },{}]},{},[4])
 

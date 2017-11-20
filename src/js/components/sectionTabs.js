@@ -1,4 +1,7 @@
+import scrollHorizontal from '../scrollHorizontal';
+
 const tabNavs = Array.from(document.querySelectorAll('.section-tabs .nav > li > a'))
+const sectionTabs = Array.from(document.querySelectorAll('.section-tabs'));
 const sectionsActive = Array.from(
   document.querySelectorAll('.section-tabs .section.active')
 )
@@ -26,6 +29,7 @@ tabNavs.forEach(nav =>
 
 window.onload = function() {
   sectionsActive.forEach(scrollToSectionActive);
+  sectionTabs.forEach(scrollHorizontal);
 }
 
 function scrollToSectionActive(sectionEl) {
