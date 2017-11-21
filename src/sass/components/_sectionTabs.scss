@@ -16,7 +16,7 @@
 
   .content {
     white-space: nowrap;
-    overflow-y: none;
+    overflow-y: hidden;
     overflow-x: scroll;  
     -webkit-overflow-scrolling: touch;
 
@@ -81,7 +81,7 @@
     overflow: hidden;
 
     > .content {
-      margin-bottom: -18px;
+      margin-bottom: -$scrollbar-height;
     }
   }
 }

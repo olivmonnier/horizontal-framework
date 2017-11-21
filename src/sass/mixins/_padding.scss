@@ -1,3 +1,11 @@
+// padding($level, $side)
+//
+// Apply padding on a block
+//
+// - `$level: 'normal'`, The level spacing defined in `$block-padding`.
+// - `$side: ''`, The side of block to apply padding. (if blank, apply for all sides)
+//
+// Styleguide: Sass.mixins.padding
 @mixin padding($level: 'normal', $side: '') {
   @if $side == '' {
     padding: map-get($block-padding, $level);

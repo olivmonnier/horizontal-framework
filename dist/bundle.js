@@ -1,23 +1,88 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var btns = Array.from(document.querySelectorAll('[data-toggle="appbar"]'));
+var _appbar = require('./components/appbar');
 
-btns.forEach(function (btn) {
-  return btn.addEventListener('click', function () {
-    this.closest('.appbar').classList.toggle('in');
+var _appbar2 = _interopRequireDefault(_appbar);
+
+var _listItems = require('./components/listItems');
+
+var _listItems2 = _interopRequireDefault(_listItems);
+
+var _sectionTabs = require('./components/sectionTabs');
+
+var _sectionTabs2 = _interopRequireDefault(_sectionTabs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.onload = function () {
+  var appBars = Array.from(document.querySelectorAll('.appbar'));
+  var listItems = Array.from(document.querySelectorAll('.list-items'));
+  var sectionTabs = Array.from(document.querySelectorAll('.section-tabs'));
+
+  appBars.forEach(function (appBar) {
+    return new _appbar2.default(appBar);
   });
+  listItems.forEach(function (list) {
+    return new _listItems2.default(list);
+  });
+  sectionTabs.forEach(function (section) {
+    return new _sectionTabs2.default(section);
+  });
+};
+
+},{"./components/appbar":2,"./components/listItems":4,"./components/sectionTabs":5}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-},{}],2:[function(require,module,exports){
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AppBar = function () {
+  function AppBar(el) {
+    _classCallCheck(this, AppBar);
+
+    this.el = el;
+    this.btn = this.el.querySelector('[data-toggle="appbar"]');
+
+    this.handlers();
+  }
+
+  _createClass(AppBar, [{
+    key: 'handlers',
+    value: function handlers() {
+      var _this = this;
+
+      this.btn.addEventListener('click', function () {
+        _this.el.classList.toggle('in');
+      });
+    }
+  }]);
+
+  return AppBar;
+}();
+
+exports.default = AppBar;
+
+},{}],3:[function(require,module,exports){
 'use strict';
 
 require('./appbar');
 
+require('./listItems');
+
 require('./sectionTabs');
 
-},{"./appbar":1,"./sectionTabs":3}],3:[function(require,module,exports){
+},{"./appbar":2,"./listItems":4,"./sectionTabs":5}],4:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _scrollHorizontal = require('../scrollHorizontal');
 
@@ -25,57 +90,118 @@ var _scrollHorizontal2 = _interopRequireDefault(_scrollHorizontal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var tabNavs = Array.from(document.querySelectorAll('.section-tabs .nav > li > a'));
-var sectionTabs = Array.from(document.querySelectorAll('.section-tabs'));
-var sectionsActive = Array.from(document.querySelectorAll('.section-tabs .section.active'));
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-tabNavs.forEach(function (nav) {
-  return nav.addEventListener('click', function (e) {
-    e.preventDefault();
-    var sectionTabEl = this.closest('.section-tabs');
-    var navEl = this.closest('.nav');
-    var sectionId = this.getAttribute('href');
-    var parent = this.parentNode;
-    var isActive = parent.classList.contains('active');
-    var sectionEl = sectionTabEl.querySelector(sectionId);
+var ListItems = function ListItems(el) {
+  _classCallCheck(this, ListItems);
 
-    if (isActive) return;
+  this.el = el;
 
-    sectionTabEl.querySelector('.content .active').classList.remove('active');
-    navEl.querySelector('.active').classList.remove('active');
-
-    sectionEl.classList.add('active');
-    parent.classList.add('active');
-    scrollToSectionActive(sectionEl);
-  });
-});
-
-window.onload = function () {
-  sectionsActive.forEach(scrollToSectionActive);
-  sectionTabs.forEach(_scrollHorizontal2.default);
+  (0, _scrollHorizontal2.default)(this.el);
 };
 
-function scrollToSectionActive(sectionEl) {
-  var contentEl = sectionEl.closest('.content');
+exports.default = ListItems;
 
-  if ('scrollTo' in window) {
-    contentEl.scrollTo({
-      'behavior': 'smooth',
-      'left': sectionEl.offsetLeft
-    });
-  } else {
-    contentEl.scrollLeft = sectionEl.offsetLeft;
+},{"../scrollHorizontal":8}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _scrollHorizontal = require('../scrollHorizontal');
+
+var _scrollHorizontal2 = _interopRequireDefault(_scrollHorizontal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SectionTabs = function () {
+  function SectionTabs(el) {
+    _classCallCheck(this, SectionTabs);
+
+    this.el = el;
+    this.navs = Array.from(this.el.querySelectorAll('.nav > li > a'));
+    this.sectionActive = this.el.querySelector('.section.active');
+
+    if (this.sectionActive) {
+      this.scrollToSection(this.sectionActive);
+    }
+    (0, _scrollHorizontal2.default)(this.el);
+    this.handlers();
   }
-}
 
-},{"../scrollHorizontal":6}],4:[function(require,module,exports){
+  _createClass(SectionTabs, [{
+    key: 'handlers',
+    value: function handlers() {
+      var self = this;
+
+      this.navs.forEach(function (nav) {
+        nav.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          var sectionId = this.getAttribute('href');
+          var parent = this.parentNode;
+          var isActive = parent.classList.contains('active');
+          var sectionActive = self.el.querySelector(sectionId);
+
+          if (isActive) return;
+
+          self.scrollToSection(sectionActive);
+        });
+      });
+    }
+  }, {
+    key: 'scrollToSection',
+    value: function scrollToSection(sectionEl) {
+      var contentEl = sectionEl.closest('.content');
+
+      this.updateState(sectionEl);
+
+      if (contentEl.scrollTo) {
+        contentEl.scrollTo({ behavior: 'smooth', left: sectionEl.offsetLeft });
+      } else {
+        contentEl.scrollLeft = sectionEl.offsetLeft;
+      }
+    }
+  }, {
+    key: 'updateState',
+    value: function updateState(sectionEl) {
+      var sectionId = sectionEl.id;
+      var navEl = this.el.querySelector('.nav');
+
+      this.el.querySelector('.content .active').classList.remove('active');
+
+      if (navEl) {
+        this.el.querySelector('.nav .active').classList.remove('active');
+      }
+
+      sectionEl.classList.add('active');
+
+      if (sectionId && navEl) {
+        this.el.querySelector('.nav [href="#' + sectionId + '"]').classList.add('active');
+      }
+    }
+  }]);
+
+  return SectionTabs;
+}();
+
+exports.default = SectionTabs;
+
+},{"../scrollHorizontal":8}],6:[function(require,module,exports){
 'use strict';
 
 require('./polyfill');
 
 require('./components');
 
-},{"./components":2,"./polyfill":5}],5:[function(require,module,exports){
+require('./app');
+
+},{"./app":1,"./components":3,"./polyfill":7}],7:[function(require,module,exports){
 'use strict';
 
 // Array.from
@@ -171,7 +297,7 @@ if (window.Element && !Element.prototype.closest) {
   };
 }
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -193,7 +319,7 @@ var scrollHorizontal = function scrollHorizontal(el) {
     var diffScroll = contentEl.scrollLeft - scroll;
 
     if (Math.abs(diffScroll) > scrollSpeed) {
-      scroll = contentEl.scrollLeft;
+      return scroll = contentEl.scrollLeft;
     }
 
     if ((e.wheelDelta || e.detail) > 0) {
@@ -208,6 +334,6 @@ var scrollHorizontal = function scrollHorizontal(el) {
 
 exports.default = scrollHorizontal;
 
-},{}]},{},[4])
+},{}]},{},[6])
 
 //# sourceMappingURL=index.js.map

@@ -14,7 +14,7 @@ const scrollHorizontal = function(el) {
     const diffScroll = contentEl.scrollLeft - scroll;
 
     if (Math.abs(diffScroll) > scrollSpeed) {
-      scroll = contentEl.scrollLeft;
+      return scroll = contentEl.scrollLeft;
     }
 
     if((e.wheelDelta || e.detail) > 0) {

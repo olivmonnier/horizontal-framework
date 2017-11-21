@@ -1,7 +1,16 @@
-const btns = Array.from(document.querySelectorAll('[data-toggle="appbar"]'));
+class AppBar {
+  constructor(el) {
+    this.el = el;
+    this.btn = this.el.querySelector('[data-toggle="appbar"]');
 
-btns.forEach(btn => 
-  btn.addEventListener('click', function() {
-    this.closest('.appbar').classList.toggle('in')
-  })
-)
+    this.handlers();
+  }
+
+  handlers() {
+    this.btn.addEventListener('click', () => {
+      this.el.classList.toggle('in');
+    })
+  }
+}
+
+export default AppBar;
