@@ -9,7 +9,8 @@
     "doc:prod": "kss --config kss-config-prod.json",
     "compile": "cross-env-shell NODE_ENV=\"production\" npm run build && npm run doc:prod",
     "dev": "cross-env-shell NODE_ENV=\"development\" npm run build && npm run doc:dev",
-    "watch": "watch \"npm run dev\" ./src/"
+    "watch": "watch \"npm run dev\" ./src/",
+    "test": "mocha --reporter spec --timeout 5000"
   },
   "keywords": [],
   "author": "",
@@ -34,8 +35,12 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.4.0",
     "kss": "^3.0.0-beta.18",
     "michelangelo": "^0.6.1",
+    "mocha": "^4.0.1",
     "watch": "^1.0.2"
   }
 }
