@@ -4,9 +4,11 @@
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production gulp build",
-    "dev": "npm run build && npm run doc",
-    "doc": "kss --config kss-config.json",
+    "build": "gulp build",
+    "compile": "cross-env-shell NODE_ENV=\"production\" npm run build && npm run doc:prod",
+    "dev": "cross-env-shell NODE_ENV=\"development\" npm run build && npm run doc:dev",
+    "doc:dev": "kss --config kss-config-dev.json",
+    "doc:prod": "kss --config kss-config-prod.json",
     "watch": "watch \"npm run dev\" ./src/"
   },
   "keywords": [],

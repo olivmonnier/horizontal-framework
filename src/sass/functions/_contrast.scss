@@ -1,3 +1,11 @@
+// contrast($background, $type)
+//
+// Return a color contrasted by parent block color
+//
+// - `$background: 'light'`, 'light' or 'dark'
+// - `$type: 'primary'`, values possible in `$contrast-colors`
+//
+// Styleguide: Sass.functions.contrast
 @function contrast($background: 'light', $type: 'primary') {
   $map: map-get($contrast-colors, $background);
   @return map-get($map, $type);

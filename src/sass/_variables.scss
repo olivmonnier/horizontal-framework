@@ -57,6 +57,7 @@ $scrollbar-height: 18px;
 // AppBar
 //
 // ```css
+// $appbar-background: contrast($theme, 'disabled');
 // $appbar-max-height: 500px;
 // $appbar-min-height: 40px;
 // $appbar-padding-level: 'normal';
@@ -64,7 +65,17 @@ $scrollbar-height: 18px;
 // ```
 //
 // Styleguide: Sass.variables.3
+$appbar-background: contrast($theme, 'disabled');
 $appbar-max-height: 500px;
 $appbar-min-height: 40px;
 $appbar-padding-level: 'normal';
 $appbar-transition: 0.3s;
+
+// SectionTabs
+//
+// ```css
+// $sectiontabs-section-width: 100%;
+// ```
+//
+// Styleguide: Sass.variables.4
+$sectiontabs-section-width: 100%;

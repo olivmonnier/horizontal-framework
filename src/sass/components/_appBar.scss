@@ -15,7 +15,7 @@
   @include padding($appbar-padding-level);
   display: block;
   min-height: $appbar-min-height;
-  background-color: contrast($theme, 'disabled');
+  background-color: $appbar-background;
 
   &.in {
     > .content {

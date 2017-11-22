@@ -13,7 +13,7 @@ const source = require('vinyl-source-stream');
 const del = require('del');
 const runSequence = require('run-sequence');
 
-const isEnvProduction = process.NODE_ENV === 'production';
+const isEnvProduction = process.env.NODE_ENV === 'production';
 
 const dirs = {
   src: 'src',
@@ -34,18 +34,22 @@ const cleanFolders = [
   `${dirs.dest}`
 ]
 
+const docsPath = 'docs';
+
 gulp.task('clean', () => {
   return del(cleanFolders)
 });
 
 gulp.task('styles', () => {
-  return gulp.src(sassPaths.src)
+  return gulp
+    .src(sassPaths.src)
     .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulpif(isEnvProduction, cleanCss()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(sassPaths.dest))
+    .pipe(gulpif(isEnvProduction, gulp.dest(docsPath)))
+    .pipe(gulp.dest(sassPaths.dest));
 });
 
 gulp.task('js', () => {
@@ -66,6 +70,7 @@ gulp.task('js', () => {
     .pipe(rename({
       basename: 'bundle'
     }))
+    .pipe(gulpif(isEnvProduction, gulp.dest(docsPath)))
     .pipe(gulp.dest(jsPaths.dest));
 });
 
