@@ -4,7 +4,7 @@
 
 // Colors
 //
-// ```css
+// ```sass
 // $theme: 'dark';
 // $contrast-colors: (
 //   'dark': (
@@ -40,7 +40,7 @@ $contrast-colors: (
 
 // Blocks
 //
-// ```css
+// ```sass
 // $block-padding: (
 //   'small': 4px,
 //   'normal': 8px,
@@ -52,11 +52,11 @@ $contrast-colors: (
 //
 // Styleguide: Sass.variables.2
 $block-padding: ( 'small': 4px, 'normal': 8px, 'large': 20px, 'important': 40px);
-$scrollbar-height: 18px;
+$scrollbar-height: 17px;
 
 // AppBar
 //
-// ```css
+// ```sass
 // $appbar-background: contrast($theme, 'disabled');
 // $appbar-max-height: 500px;
 // $appbar-min-height: 40px;
@@ -73,7 +73,7 @@ $appbar-transition: 0.3s;
 
 // SectionTabs
 //
-// ```css
+// ```sass
 // $sectiontabs-section-width: 100%;
 // ```
 //

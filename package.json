@@ -5,10 +5,10 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "gulp build",
-    "compile": "cross-env-shell NODE_ENV=\"production\" npm run build && npm run doc:prod",
-    "dev": "cross-env-shell NODE_ENV=\"development\" npm run build && npm run doc:dev",
     "doc:dev": "kss --config kss-config-dev.json",
     "doc:prod": "kss --config kss-config-prod.json",
+    "compile": "cross-env-shell NODE_ENV=\"production\" npm run build && npm run doc:prod",
+    "dev": "cross-env-shell NODE_ENV=\"development\" npm run build && npm run doc:dev",
     "watch": "watch \"npm run dev\" ./src/"
   },
   "keywords": [],
