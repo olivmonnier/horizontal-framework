@@ -1,3 +1,3 @@
 import './appbar'
-import './listItems'
+import './navHorizontal'
 import './sectionTabs'

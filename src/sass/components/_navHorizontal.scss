@@ -1,7 +1,7 @@
-// ListItems
+// NavHorizontal
 //
 // Markup:
-// <div class="list-items" style="width: 300px;">
+// <div class="nav-horizontal" style="width: 300px;">
 //   <ul class="content">
 //     <li style="padding: 20px; width: 50px;">0</li>
 //     <li style="padding: 20px; width: 50px;">1</li>
@@ -16,9 +16,9 @@
 //   </ul>
 // </div>
 //
-// Styleguide Components.listitems
+// Styleguide Components.navhorizontal
 
-.list-items {
+.nav-horizontal {
   .content {
     padding-left: 0;
     list-style: none;
@@ -33,10 +33,10 @@
   }
 }
 
-// ListItems without scrollbar
+// NavHorizontal without scrollbar
 //
 // Markup:
-// <div class="list-items" style="width: 300px;">
+// <div class="nav-horizontal" style="width: 300px;">
 //   <div class="no-scrollbar">
 //     <ul class="content">
 //       <li style="padding: 20px; width: 50px;">0</li>
@@ -53,8 +53,8 @@
 //   </div>
 // </div>
 //
-// Styleguide Components.listitems.1
-.list-items {
+// Styleguide Components.navhorizontal.1
+.nav-horizontal {
   .no-scrollbar {
     overflow: hidden;
 

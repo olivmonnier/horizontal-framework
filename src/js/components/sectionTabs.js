@@ -1,4 +1,4 @@
-import scrollHorizontal from '../scrollHorizontal';
+import scrollHorizontal from '../utils/scrollHorizontal';
 
 class SectionTabs {
   constructor(el) {

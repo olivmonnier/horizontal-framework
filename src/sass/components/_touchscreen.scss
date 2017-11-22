@@ -1,0 +1,9 @@
+.touchscreen {
+  .nav-horizontal, .section-tabs {
+    .no-scrollbar {
+      > .content {
+        margin-bottom: 0
+      }
+    }
+  }
+}
